@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Please Save Water</title>
+    <style>
+      body,
+      html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        width: 100%;
+        background-color: #74ebd5;
+        background-image: linear-gradient(90deg, #74ebd5 0%, #9face6 100%);
+        min-width: 1200px;
+      }
+
+      .img,
+      .drop,
+      .wave {
+        margin: 125px auto;
+      }
+      .img {
+        position: relative;
+        width: auto;
+        height: 300px;
+        border: 2px solid none;
+      }
+
+      .drop {
+        position: relative;
+        width: 20px;
+        height: 20px;
+        top: -30px;
+        margin: 0 auto;
+        background: #fff;
+        border-radius: 20px;
+        animation-name: drip;
+        animation-timing-function: cubic-bezier(1, 0, 0.91, 0.19);
+        animation-duration: 2s;
+        animation-iteration-count: infinite;
+      }
+
+      .drop:before {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 0;
+        border-left: 10px solid transparent;
+        border-right: 10px solid transparent;
+        border-bottom: 30px solid rgba(255, 255, 255, 1);
+        top: -22px;
+      }
+
+      .wave {
+        position: relative;
+        opacity: 0;
+        top: 0;
+        width: 2px;
+        height: 1px;
+        border: #fff 7px solid;
+        border-radius: 300px / 150px;
+        animation-name: ripple;
+        animation-delay: 2s;
+        animation-duration: 2s;
+        animation-iteration-count: infinite;
+      }
+
+      .wave:after {
+        content: "";
+        position: absolute;
+        opacity: 0;
+        top: -5px;
+        left: -5px;
+        width: 2px;
+        height: 1px;
+        border: #fff 5px solid;
+        border-radius: 300px / 150px;
+        animation-name: ripple-2;
+        animation-duration: 2s;
+        animation-iteration-count: infinite;
+      }
+
+      @keyframes ripple {
+        from {
+          opacity: 1;
+        }
+        to {
+          width: 600px;
+          height: 300px;
+          border-width: 1px;
+          top: -100px;
+          opacity: 0;
+        }
+      }
+
+      @keyframes ripple-2 {
+        0% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0;
+        }
+        100% {
+          width: 200px;
+          height: 100px;
+          border-width: 1px;
+          top: 100px;
+          left: 200px;
+        }
+      }
+
+      @keyframes drip {
+        to {
+          top: 190px;
+        }
+      }
+      .btn01 {
+        position: absolute;
+        top: 20px;
+        left: 300px;
+        width: 130px;
+        height: 150px;
+      }
+      .el-button--primary.is-plain {
+        color: blue !important;
+        font-weight: bold !important;
+        font-size: 20px !important;
+        position: absolute;
+        width: 40px;
+        height: 100px;
+        top: 50px;
+      }
+      .el-button {
+        writing-mode: vertical-lr;
+      }
+      .dis {
+        position: absolute;
+        left: 16px;
+        margin-top: 100px;
+        width: 250px;
+        height: 250px;
+        top: 160px;
+        margin: 0 auto;
+        background: rgb(92, 202, 245);
+        border-radius: 125px;
+      }
+      .dif {
+        margin-top: 100px;
+        padding-top: 0px;
+        position: absolute;
+        left: 39px;
+        top: 10px;
+        width: 0;
+        height: 0;
+        border-left: 100px solid transparent;
+        border-right: 100px solid transparent;
+        border-bottom: 100px solid rgb(92, 202, 245);
+      }
+
+      #eye1,
+      #eye2 {
+        position: absolute;
+        top: 243px;
+        left: 80px;
+        width: 40px;
+        height: 40px;
+        background-color: black;
+        border-radius: 18px;
+      }
+      #eye2 {
+        position: absolute;
+        top: 250px;
+        left: 190px;
+      }
+      .innere1,
+      .innere2 {
+        position: absolute;
+        top: 258px;
+        left: 98px;
+        width: 12px;
+        height: 12px;
+        background-color: white;
+        border-radius: 5px;
+      }
+      .innere2 {
+        position: absolute;
+        top: 265px;
+        left: 210px;
+      }
+      .rad {
+        position: absolute;
+        top: 345px;
+        left: 100px;
+        display: block;
+        width: 90px;
+        height: 10px;
+        background-color: black;
+        transform: rotate(5deg);
+        border-radius: 100%;
+      }
+
+      .dialog1,
+      .dialog2 {
+        position: absolute;
+        left: 200px;
+        width: 20px;
+        height: 20px;
+        top: 410px;
+        margin: 0 auto;
+        background: rgb(24, 28, 131);
+        border-radius: 125px;
+      }
+      .dialog2 {
+        position: absolute;
+        left: 230px;
+        top: 430px;
+      }
+      .dialog {
+        position: absolute;
+        top: 320px;
+        left: 250px;
+        width: 300px;
+        height: 200px;
+        border-radius: 100px;
+        border: 1px solid rgb(0, 89, 255);
+        margin: 100px auto;
+        background: radial-gradient(
+          circle,
+          rgb(255, 255, 255),
+          rgb(0, 140, 236)
+        );
+        font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+        font-size: 28px;
+        font-weight: 700;
+        text-align: center;
+        color: blue;
+      }
+      .save {
+        position: absolute;
+        left: 30px;
+        top: 50px;
+      }
+      .sign p {
+        position: absolute;
+        right: 0;
+        margin: 0;
+        padding: 0;
+        line-height: 1.7em;
+        font-family: Verdana, Geneva, sans-serif;
+        color: #707b84;
+        transform: rotate(-30deg);
+      }
+
+      .sign p:nth-child(1) {
+        font-size: 200px;
+        right: 290px;
+        top: 25px;
+      }
+      .sign p:nth-child(2) {
+        font-size: 150px;
+        right: 100px;
+        top: 0px;
+      }
+      .sign p:nth-child(3) {
+        position: absolute;
+        font-size: 4rem;
+        letter-spacing: 15px;
+        right: 0px;
+        top: 440px;
+        transform: rotate(0);
+      }
+      #app {
+        padding-left: 280px;
+        padding-right: 300px;
+      }
+      .center {
+        float: left;
+        width: 100%;
+        height: 100%;
+      }
+      .left {
+        position: relative;
+        width: 20px;
+        height: 100%;
+        left: -280px;
+        margin-left: -100%;
+        float: left;
+      }
+      .right {
+        position: relative;
+        width: 300px;
+        height: 100%;
+        left: 300px;
+        margin-left: -300px;
+        float: left;
+      }
+      .el-button--primary.is-plain {
+        width: auto !important;
+        height: 100px;
+        border-radius: 10px;
+        color: rgb(216, 219, 208) !important;
+        background: rgb(87, 167, 187) !important;
+        opacity: 0.7 !important;
+        box-shadow: 18px 18px 50px #66d4e7, -18px -18px 50px #70b2f0;
+        border: 2px solid yellowgreen !important;
+      }
+      .el-button.is-plain:focus,
+      .el-button.is-plain:hover {
+        color: rgb(187, 255, 0) !important;
+        background-color: rgb(57, 128, 209) !important;
+      }
+    </style>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!-- 引入样式 -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/element-ui/lib/theme-chalk/index.css"
+    />
+    <!-- 引入组件库 -->
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+  </head>
+
+  <body>
+    <div id="app">
+      <div class="center">
+        <div class="img">
+          <div class="drop"></div>
+          <div class="wave"></div>
+        </div>
+      </div>
+      <div class="left">
+        <div class="dis"></div>
+        <div class="dif"></div>
+
+        <div id="eye1"></div>
+        <div id="eye2"></div>
+
+        <div class="innere1"></div>
+        <div class="innere2"></div>
+
+        <span class="rad"></span>
+
+        <div class="dialog1"></div>
+        <div class="dialog2"></div>
+
+        <div class="dialog">
+          <p class="save">{{save}}</p>
+          <p>THANK YOU</p>
+        </div>
+
+        <div class="btn01" @click="stopdrop">
+          <el-button type="primary" plain> {{sign}}</el-button>
+        </div>
+      </div>
+      <div class="right">
+        <div class="sign">
+          <p class="date">3.</p>
+          <p class="date">22</p>
+          <p class="date">世界节水日</p>
+        </div>
+      </div>
+    </div>
+  </body>
+
+  <script>
+    let app = new Vue({
+      el: "#app",
+      data: {
+        sign: "CLOSE WATER",
+        save: "Please click close water!",
+      },
+      methods: {
+        stopdrop() {
+          let btn01 = document.querySelector(".btn01");
+          let wave = document.querySelector(".wave");
+          let drop = document.querySelector(".drop");
+          let sign = document.getElementsByClassName("date");
+          wave.style.display = "none";
+          drop.style.animation = "none";
+          alert("节约用水,人人有责");
+          sign[0].style.color = "yellow";
+          sign[1].style.color = "yellow";
+          sign[2].style.color = "yellow";
+        },
+      },
+    });
+  </script>
+</html>
